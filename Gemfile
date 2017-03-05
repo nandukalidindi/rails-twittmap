@@ -29,6 +29,8 @@ gem 'omniauth-oauth'
 
 gem 'omniauth-twitter'
 
+gem 'twitter'
+
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
