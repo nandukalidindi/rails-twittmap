@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
     end
 
     client.sample do |object|
-      puts object.text if object.is_a?(Twitter::Tweet)
+      Rails.logger.info object.text if object.is_a?(Twitter::Tweet)
     end
   end
 end

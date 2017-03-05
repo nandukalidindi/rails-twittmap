@@ -34,6 +34,10 @@ gem 'twitter'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+gem 'underscore-rails'
+
+gem 'gmaps4rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
