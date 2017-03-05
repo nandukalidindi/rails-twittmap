@@ -1,3 +1,5 @@
+require 'pry'
+
 class SessionsController < ApplicationController
   def setup
     strategy = request.env['omniauth.strategy']
