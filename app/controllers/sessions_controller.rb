@@ -7,8 +7,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
-
+    credentials = request.env['omniauth.auth']['credentials']
+    twitter_app = ConnectedApp.where(name: 'twitter').first_or_create
+    twitter_app.token = credentials['token']
+    twitter_app.token_secret = credentials['secret']
+    twitter_app.save!
     redirect_to '/', status: 302
   end
 end
