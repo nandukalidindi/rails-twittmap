@@ -8,18 +8,11 @@ class TweetsController < ApplicationController
       config.access_token        = twitter_app.token
       config.access_token_secret = twitter_app.token_secret
     end
-    # client.sample do |object|
-    #   if object.is_a?(Twitter::Tweet)
-    #     unless object.geo.nil?
-    #       Rails.logger.info "OBJECT IS #{object.geo}"
-    #     end
-    #   end
-    # end
 
     client.filter(locations: "-180, -90, 180, 90") do |object|
       if object.is_a?(Twitter::Tweet)
         unless object.geo.nil?
-          Rails.logger.info "OBJECT IS #{object.geo}"
+          Tweet.create(text: object.text, latitude: object.geo.latitude, longitude: object.geo.longitude)
         end
       end
     end
