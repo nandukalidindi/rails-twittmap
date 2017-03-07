@@ -31,6 +31,8 @@ gem 'omniauth-twitter'
 
 gem 'twitter'
 
+gem 'puma'
+
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 

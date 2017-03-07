@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'application#home'
   get '/auth/twitter/setup' => 'sessions#setup'
   get '/auth/twitter/callback' => 'sessions#create'
+  get 'messaging' => 'messaging#send_message', :as => 'messaging'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

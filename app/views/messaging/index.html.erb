@@ -1,0 +1,6 @@
+<%= form_tag messaging_path, :method => 'get' do %>
+
+    <%= text_field_tag :message, params[:message] %>
+    <%= submit_tag "Post Message" %>
+
+<% end %>
