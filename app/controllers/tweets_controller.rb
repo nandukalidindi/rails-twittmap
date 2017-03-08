@@ -14,6 +14,7 @@ class TweetsController < ApplicationController
         unless object.geo.nil?
           location = [object.geo.longitude, object.geo.latitude]
           Tweet.create(text: object.text, location: location)
+          Rails.logger.info "CREATED TWEET #{object.text}"
         end
       end
     end
