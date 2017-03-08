@@ -12,7 +12,8 @@ class TweetsController < ApplicationController
     client.filter(locations: "-180, -90, 180, 90") do |object|
       if object.is_a?(Twitter::Tweet)
         unless object.geo.nil?
-          Tweet.create(text: object.text, latitude: object.geo.latitude, longitude: object.geo.longitude)
+          location = [object.geo.longitude, object.geo.latitude]
+          Tweet.create(text: object.text, location: location)
         end
       end
     end
