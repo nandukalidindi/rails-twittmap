@@ -14,4 +14,4 @@ class Tweet < ActiveRecord::Base
   end
 end
 
-Tweet.__elasticsearch__.create_index! force: true
+# Tweet.__elasticsearch__.create_index! force: true
