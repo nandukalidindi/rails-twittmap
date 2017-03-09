@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: twittmap_db
+  database: twittmap_production
   username: twittmap
   password: twitter
