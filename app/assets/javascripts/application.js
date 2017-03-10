@@ -41,3 +41,37 @@ function renderMap() {
 function alertMe(data) {
   alert(data);
 }
+
+function getCurrectMapCoordinates(event) {
+  debugger;
+}
+
+function onDoubleClick(event) {
+  debugger;
+}
+
+// var infoWindow = new google.maps.InfoWindow(), marker, i;
+//
+//     // Loop through our array of markers & place each one on the map
+//     for( i = 0; i < markers.length; i++ ) {
+//         var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+//         bounds.extend(position);
+//         marker = new google.maps.Marker({
+//             position: position,
+//             map: map,
+//             title: markers[i][0]
+//         });
+//
+//         // Allow each marker to have an info window
+//         google.maps.event.addListener(marker, 'click', (function(marker, i) {
+//             return function() {
+//                 infoWindow.setContent(infoWindowContent[i][0]);
+//                 infoWindow.open(map, marker);
+//             }
+//         })(marker, i));
+//
+//         // Automatically center the map fitting all markers on the screen
+//         map.fitBounds(bounds);
+//     }
+
+// document.getElementById('map').addEventListener('click', getCurrectMapCoordinates);

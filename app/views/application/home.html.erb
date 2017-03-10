@@ -2,7 +2,9 @@
 
 <a href='/auth/twitter?repository_access=true'> Get Token </a> </br></br>
 
-
+<header>
+  
+</header>
 
 <div style='width: 100%; display: flex; justify-content: space-around'>
   <div id="map" style='width: 90%; height: 500px;'></div>
@@ -10,9 +12,15 @@
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>)
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
+  var map = handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>)
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
   });
+  var search = gon.search;
+  google.maps.event.addListener(map.serviceObject, 'click', function( event ){
+    window.location.replace("http://localhost:3000?search=" + search + "&lat=" + event.latLng.lat() + "&lng=" + event.latLng.lng());
+  });
+
+  // alert( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() );
 </script>
