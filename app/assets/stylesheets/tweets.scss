@@ -750,8 +750,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #222222;
   text-rendering: optimizeLegibility;
   line-height: 1.1;
-  margin-bottom: 14px;
-  margin-top: 14px;
 }
 /* line 23, /home/clusterer/tweetmap/shared/bundle/ruby/1.9.1/gems/zurb-foundation-3.1.1/scss/foundation/common/_typography.scss */
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
@@ -6030,7 +6028,6 @@ header #header_content #maptimize_power, div#header #header_content #maptimize_p
   position: relative;
   display: block;
   float: right;
-  width: 305px;
   margin-right: 10px;
   margin-top: 14px;
 }
@@ -6082,7 +6079,6 @@ h2 {
   float: left;
   height: 100%;
   width: auto;
-  font-family: 'TitilliumText22LThin', cursive;
   font-size: 40px;
   color: #848484;
   line-height: 75px;

@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   def home
     @tweets = Tweet.search(params[:search], {lat: params[:lat], lon: params[:lng]}).records
+    @tweet_count = @tweets.count
+    @query = params[:search]
     gon.search = params[:search]
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
               marker.lat tweet.location[1]
