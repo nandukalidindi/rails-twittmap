@@ -3,7 +3,7 @@
 <a href='/auth/twitter?repository_access=true'> Get Token </a> </br></br>
 
 <header>
-  
+
 </header>
 
 <div style='width: 100%; display: flex; justify-content: space-around'>
@@ -19,7 +19,7 @@
   });
   var search = gon.search;
   google.maps.event.addListener(map.serviceObject, 'click', function( event ){
-    window.location.replace("http://localhost:3000?search=" + search + "&lat=" + event.latLng.lat() + "&lng=" + event.latLng.lng());
+    window.location.replace("http://localhost:3000?lat=" + event.latLng.lat() + "&lng=" + event.latLng.lng());
   });
 
   // alert( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() );

@@ -4,9 +4,72 @@ class Tweet < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+
+  ELASTICSEARCH_MAX_RESULTS = 1000
   mapping do
     indexes :text, type: 'string'
     indexes :location, type: 'geo_point'
+  end
+
+  def self.search(query = nil, options = {})
+    options ||= {}
+
+    if query == '*'
+      search_definition = {
+        query: {
+          match_all: {}
+        }
+      }
+      search_definition[:size] = ELASTICSEARCH_MAX_RESULTS
+      return __elasticsearch__.search(search_definition)
+    end
+
+    # define search definition
+    search_definition = {
+      query: {
+        bool: {
+          must: []
+        }
+      }
+    }
+
+    unless options.blank?
+      search_definition[:from] = 0
+      search_definition[:size] = ELASTICSEARCH_MAX_RESULTS
+    end
+
+    # query
+    if query.present?
+      search_definition[:query][:bool][:must] << {
+        multi_match: {
+          query: query,
+          fields: 'text'
+        }
+      }
+    end
+
+    # geo spatial
+    if options[:lat].present? && options[:lon].present?
+      options[:distance] ||= 100
+
+      search_definition = {
+        query: {
+          bool: {
+            filter: {
+              geo_distance: {
+                distance: "1000km",
+                location: {
+                  lat: options[:lat].to_f,
+                  lon: options[:lon].to_f
+                }
+              }
+            }
+          }
+        }
+      }
+      search_definition[:size] = ELASTICSEARCH_MAX_RESULTS
+    end
+    __elasticsearch__.search(search_definition)
   end
 
   def as_indexed_json(options={})

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def home
-    @tweets = Tweet.search(params[:search]).records
+    @tweets = Tweet.search(params[:search], {lat: params[:lat], lon: params[:lng]}).records
     gon.search = params[:search]
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
               marker.lat tweet.location[1]
