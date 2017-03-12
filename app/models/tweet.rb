@@ -6,10 +6,10 @@ class Tweet < ActiveRecord::Base
 
 
   ELASTICSEARCH_MAX_RESULTS = 1000
-  mapping do
-    indexes :text, type: 'string'
-    indexes :location, type: 'geo_point'
-  end
+  # mapping do
+  #   indexes :text, type: 'string'
+  #   indexes :location, type: 'geo_point'
+  # end
 
   def self.search(query = nil, options = {})
     options ||= {}
@@ -73,7 +73,7 @@ class Tweet < ActiveRecord::Base
   end
 
   def as_indexed_json(options={})
-    as_json(only: 'text').merge location: { lat: self.location[1], lon: self.location[0] }
+    as_json(text: self.text, keywords: self.keywords, hashtags: self.hashtags).merge location: { lat: self.location[1], lon: self.location[0] }
   end
 end
 
