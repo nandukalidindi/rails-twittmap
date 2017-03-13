@@ -21,7 +21,9 @@ class TweetsController < ApplicationController
       if object.is_a?(Twitter::Tweet)
         unless object.geo.nil?
           location = [object.geo.longitude, object.geo.latitude]
-          Tweet.create(text: object.text, location: location)
+          keywords = object.text.split(" ")
+          hashtags = keywords.select { |x| x[0] == '#' }.map { |y| y[1..-1] }
+          Tweet.create(text: object.text, location: location, keywords: keywords, hashtags: hashtags)
           response.stream.write "Tweeted #{object.text} at location #{location}. COUNT: #{Tweet.all.count}\n\n"
           sleep 0.5
         end

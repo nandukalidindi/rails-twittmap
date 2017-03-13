@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308073325) do
+ActiveRecord::Schema.define(version: 20170312234322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20170308073325) do
     t.datetime "updated_at",              null: false
     t.string   "text"
     t.float    "location",   default: [],              array: true
+    t.string   "keywords",   default: [],              array: true
+    t.string   "hashtags",   default: [],              array: true
   end
 
 end
