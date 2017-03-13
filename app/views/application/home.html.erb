@@ -21,12 +21,14 @@
   <div class="viewport">
     <div class="overview" style="top: 0px;">
       <div class="block center first" id="since_block">
-        <h4>Number of tweets loaded</h4>
+        <h4 style="font-family: 'TitilliumText22LThin', cursive;">Number of tweets loaded</h4>
         <div id="counter_since">
           <span class="n"><%= @tweet_count.to_s[-7] || "0" %></span><span class="n"><%= @tweet_count.to_s[-6] || "0" %></span><span class="n"><%= @tweet_count.to_s[-5] || "0" %></span><span class="n"><%= @tweet_count.to_s[-4] || "0" %></span><span class="n"><%= @tweet_count.to_s[-3] || "0" %></span><span class="n"><%= @tweet_count.to_s[-2] || "0" %></span><span class="n"><%= @tweet_count.to_s[-1] || "0" %></span>
         </div>
       </div>
       <div class="block center" id="switch_block">
+        <div class="clear"></div>
+        <div class="clear"></div>
         <div class="clear"></div>
         <div id="filter_search">
           <form action="#" onsubmit="return false">
@@ -37,7 +39,7 @@
         </div>
         <div class="clear"></div>
         <div id="hashtags">
-          <p class="exemple">10 most popular hashtags<br>
+          <p class="exemple">10 most popular keywords<br>
             <span id="popular_tags">
               <% @keywords.each do |keyword| %>
                 <a href="?search=<%= keyword['key'] %>" > <%= keyword['key'] %> (<%= keyword['doc_count'] %>) </a> &nbsp;&nbsp;&nbsp;
@@ -46,13 +48,6 @@
           <div class="clear"></div>
         </div>
         <div class="clear"></div>
-        <div id="filter_twitter2">
-          <form action="#" onsubmit="return false">
-            <span></span>
-            <input type="text" id="tagsfield" name="search" placeholder="hashtags filter " data-condition-type="string" data-condition="hashtags:?">
-          </form>
-          <div class="clear"></div>
-        </div>
         <div class="clear"></div>
         <div id="hashtags">
           <p class="exemple">10 most popular hashtags<br>
@@ -101,6 +96,12 @@
     if(event.keyCode == 13) {
       window.location.replace("?search=" + event.target.value);
     }
-  })
+  });
+
+  document.getElementById("hashtag-input").addEventListener("keydown", function(event) {
+    if(event.keyCode == 13) {
+      window.location.replace("?search=" + event.target.value);
+    }
+  });
   // alert( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() );
 </script>
