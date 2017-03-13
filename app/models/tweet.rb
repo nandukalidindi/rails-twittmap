@@ -11,6 +11,21 @@ class Tweet < ActiveRecord::Base
   #   indexes :location, type: 'geo_point'
   # end
 
+  def self.get_frequent_words(column, size = 10)
+    search_definition = {
+      size: 0,
+      aggs: {
+        column.to_sym => {
+          terms: {
+            field: "#{column}.raw",
+            size: size
+          }
+        }
+      }
+    }
+    __elasticsearch__.search(search_definition).response['aggregations'][column]['buckets']
+  end
+
   def self.search(query = nil, options = {})
     options ||= {}
 

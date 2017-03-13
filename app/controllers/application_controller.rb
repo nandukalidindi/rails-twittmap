@@ -13,7 +13,5 @@ class ApplicationController < ActionController::Base
               marker.lng tweet.location[0]
               marker.infowindow tweet.text
             end
-
-    # @hash = @tweets.map { |x| {latitude: x.location[1], longitude: x.location[0], text: x.text}}
   end
 end
