@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   def home
     @tweets = Tweet.search(params[:search], {lat: params[:lat], lon: params[:lng]}).records
+    @hashtags = Tweet.get_frequent_words("hashtags")
+    @keywords = Tweet.get_frequent_words("keywords")
     @tweet_count = @tweets.count
     @query = params[:search]
     gon.search = params[:search]

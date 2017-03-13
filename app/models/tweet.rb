@@ -6,10 +6,10 @@ class Tweet < ActiveRecord::Base
 
 
   ELASTICSEARCH_MAX_RESULTS = 1000
-  # mapping do
-  #   indexes :text, type: 'string'
-  #   indexes :location, type: 'geo_point'
-  # end
+  mapping do
+    indexes :text, type: 'string'
+    indexes :location, type: 'geo_point'
+  end
 
   def self.get_frequent_words(column, size = 10)
     search_definition = {

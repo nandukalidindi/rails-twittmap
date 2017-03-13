@@ -31,8 +31,18 @@
         <div id="filter_search">
           <form action="#" onsubmit="return false">
             <span></span>
-            <input id="keyword-input" type="text" value=<%= @query %> name="search" placeholder="keywords filter" data-condition-type="string" data-condition="(text:? OR user.screen_name:*?*)">
+            <input id="keyword-input" type="text" value="<%= @query %>" name="search" placeholder="keywords filter" data-condition-type="string" data-condition="(text:? OR user.screen_name:*?*)">
           </form>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div id="hashtags">
+          <p class="exemple">10 most popular hashtags<br>
+            <span id="popular_tags">
+              <% @keywords.each do |keyword| %>
+                <a href="?search=<%= keyword['key'] %>" > <%= keyword['key'] %> (<%= keyword['doc_count'] %>) </a> &nbsp;&nbsp;&nbsp;
+              <% end %>
+            </span>
           <div class="clear"></div>
         </div>
         <div class="clear"></div>
@@ -45,18 +55,14 @@
         </div>
         <div class="clear"></div>
         <div id="hashtags">
-          <p class="exemple">5 most popular hashtags<br>  <span id="popular_tags"><a href="">job</a>&nbsp;(20516) <a href="">hiring</a>&nbsp;(18327) <a href="">careerarc</a>&nbsp;(9411) <a href="">jobs</a>&nbsp;(4406) <a href="">hospitality</a>&nbsp;(2982) </span></p>
+          <p class="exemple">10 most popular hashtags<br>
+            <span id="popular_tags">
+              <% @hashtags.each do |hashtag| %>
+                <a href="?search=<%= hashtag['key'] %>" > <%= hashtag['key'] %> (<%= hashtag['doc_count'] %>) </a> &nbsp;&nbsp;&nbsp;
+              <% end %>
+            </span>
           <div class="clear"></div>
         </div>
-        <form class="custom" id="timerange">
-
-          <div class="custom dropdown" style="width: 171px;">
-            <a href="#" class="current">No Time Filtering</a>
-            <a href="#" class="selector"></a>
-            <ul style="width: 171px;"><li class="selected">No Time Filtering</li><li>last 5 minutes</li><li>last 10 minutes</li><li>last 15 minutes</li><li>last 30 minutes</li><li>last hour</li><li>last 2 hours</li><li>last 3 hours</li><li>last 4 hours</li><li>last 5 hours</li><li>last 6 hours</li></ul></div>
-
-
-        </form>
         <div class="clear"></div>
       </div>
       <div class="block center" id="reset">
