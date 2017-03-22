@@ -5,7 +5,7 @@ class Tweet < ActiveRecord::Base
   include Elasticsearch::Model::Callbacks
 
 
-  ELASTICSEARCH_MAX_RESULTS = 1000
+  ELASTICSEARCH_MAX_RESULTS = 10000
   mapping do
     indexes :text, type: 'string'
     indexes :location, type: 'geo_point'
